@@ -5,29 +5,24 @@
 //  Created by jjudy on 2022/07/22.
 //
 
-// 2884
+// 2525
 import Foundation
 
-let line = readLine()!
-let timeArr = line.components(separatedBy: " ")
-let hour = Int(timeArr[0])!
-let min = Int(timeArr[1])!
+let currentTimeLine = readLine()!
+let currentTimeArr = currentTimeLine.components(separatedBy: " ")
+let currentH = Int(currentTimeArr[0])!
+let currentM = Int(currentTimeArr[1])!
 
-var changeH = hour
-var changeM = min
-    
-if min - 45 < 0 {
-    if changeH == 0 {
-        changeH = 23
+let needTime = Int(readLine()!)!
+
+var changeH = currentH
+var changeM = currentM
+if currentM + needTime >= 60 {
+    changeH += (currentM + needTime) / 60
+    changeM = (currentM + needTime) % 60
     } else {
-        changeH -= 1
-    }
-    changeM = 60 + (changeM - 45)
-} else {
-    changeM -= 45
+    changeM += needTime
 }
+changeH %= 24
 
-print(changeH, terminator: " ")
-print(changeM)
-
-
+print("\(changeH) \(changeM)")
