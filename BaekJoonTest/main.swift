@@ -5,20 +5,14 @@
 //  Created by jjudy on 2022/07/22.
 //
 
-// 10950
+// 8393
 import Foundation
 
-let num = Int(readLine()!)!
-var nums: [(Int, Int)] = []
+var sum = 0
+var num = Int(readLine()!)!
 
 for i in 1...num {
-    let readNum = readLine()!
-    let readNumArr = readNum.components(separatedBy: " ")
-    let firstNum = Int(readNumArr[0])!
-    let secondNum = Int(readNumArr[1])!
-    nums.append((firstNum, secondNum))
+    sum += i
 }
 
-for i in nums {
-    print(i.0 + i.1)
-}
+print(sum)
