@@ -5,7 +5,7 @@
 //  Created by jjudy on 2022/07/22.
 //
 
-// 11021
+// 11022
 import Foundation
 
 var num = Int(readLine()!)!
@@ -19,5 +19,5 @@ for _ in 1...num {
 }
 
 for i in 0...numArray.count-1{
-    print("Case #\(i+1): \(numArray[i].0 + numArray[i].1)")
+    print("Case #\(i+1): \(numArray[i].0) + \(numArray[i].1) = \(numArray[i].0 + numArray[i].1)")
 }
