@@ -5,22 +5,12 @@
 //  Created by jjudy on 2022/07/22.
 //
 
-// 1110
+// 10818
 import Foundation
 
-var cycle = 0
+let num = Int(readLine()!)!
+var numArr = readLine()!.split(separator: " ").map{Int($0)!}
 
-var num = Int(readLine()!)!
-let numOfGoal = num
+numArr.sort()
 
-while true {
-    cycle += 1
-    let firstNum = num/10
-    let secondNum = num%10
-    let sumOfNum = firstNum + secondNum
-    let newNum = secondNum * 10 + sumOfNum % 10
-    num = newNum
-    if newNum == numOfGoal { break }
-}
-
-print(cycle)
+print("\(numArr[0]) \(numArr[numArr.count - 1])")
