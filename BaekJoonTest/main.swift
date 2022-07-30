@@ -5,12 +5,22 @@
 //  Created by jjudy on 2022/07/22.
 //
 
-// 10818
+// 2562
 import Foundation
 
-let num = Int(readLine()!)!
-var numArr = readLine()!.split(separator: " ").map{Int($0)!}
+var numArr: Array<Int> = []
+var maxNum = 0
+var maxIndex = 0
 
-numArr.sort()
+for _ in 1...9 {
+    let readNum = Int(readLine()!)!
+    numArr.append(readNum)
+}
 
-print("\(numArr[0]) \(numArr[numArr.count - 1])")
+for i in 0...numArr.count-1 {
+    guard numArr[i] > maxNum else { continue }
+    maxNum = numArr[i]
+    maxIndex = i+1
+}
+
+print("\(maxNum) \(maxIndex)")
