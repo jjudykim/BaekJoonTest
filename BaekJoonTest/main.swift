@@ -5,22 +5,27 @@
 //  Created by jjudy on 2022/07/22.
 //
 
-// 2562
+// 2577
 import Foundation
 
 var numArr: Array<Int> = []
-var maxNum = 0
-var maxIndex = 0
+var sumNum = 0
+var strNum = ""
 
-for _ in 1...9 {
+for _ in 1...3 {
     let readNum = Int(readLine()!)!
     numArr.append(readNum)
 }
 
-for i in 0...numArr.count-1 {
-    guard numArr[i] > maxNum else { continue }
-    maxNum = numArr[i]
-    maxIndex = i+1
-}
+sumNum = numArr[0] * numArr[1] * numArr[2]
+strNum = String(sumNum)
 
-print("\(maxNum) \(maxIndex)")
+for i in 0...9 {
+    var count = 0
+    for j in strNum {
+        if String(i) == String(j) {
+            count += 1
+        }
+    }
+    print(count)
+}
