@@ -5,25 +5,35 @@
 //  Created by jjudy on 2022/07/22.
 //
 
-// 1546
+// 8958
 import Foundation
 
-// 일단 세준이는 자기 점수 중에 최댓값을 골랐다. 이 값을 M이라고 한다. 그리고 나서 모든 점수를 점수/M*100으로 고쳤다.
-// 예를 들어, 세준이의 최고점이 70이고, 수학점수가 50이었으면 수학점수는 50/70*100이 되어 71.43점이 된다.
-// 세준이의 성적을 위의 방법대로 새로 계산했을 때, 새로운 평균을 구하는 프로그램을 작성하시오.
+// "OOXXOXXOOO"의 점수는 1+2+0+0+1+0+0+1+2+3 = 10점이다.
+// OX퀴즈의 결과가 주어졌을 때, 점수를 구하는 프로그램을 작성하시오.
+// 첫째 줄에 테스트 케이스의 개수가 주어진다.
+// 각 테스트 케이스는 한 줄로 이루어져 있고, 길이가 0보다 크고 80보다 작은 문자열이 주어진다. 문자열은 O와 X만으로 이루어져 있다.
 
-let scoreCount = Int(readLine()!)!
-let score = readLine()!.split(separator: " ").map { Int(String($0))! }
-var changeScoreArr: [Double] = []
-let maxScore = Double(score.sorted().last!)
-var sumScore = 0.0
+let testCount = Int(readLine()!)!
+var strArr: [String] = []
 
-for i in score {
-    changeScoreArr.append(Double(i) / maxScore * 100.0)
+for _ in 1...testCount {
+    strArr.append(readLine()!)
 }
 
-for i in changeScoreArr {
-    sumScore += i
+for i in strArr {
+    var isPreviousCorrect = false
+    var score = 0
+    var currentScore = 0
+    for j in i {
+        guard j == "O" else {
+            isPreviousCorrect = false
+            continue
+        }
+        
+        if isPreviousCorrect { currentScore += 1}
+        else { currentScore = 1 }
+        isPreviousCorrect = true
+        score += currentScore
+    }
+    print(score)
 }
-
-print(sumScore / Double(changeScoreArr.count))
