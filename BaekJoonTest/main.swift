@@ -5,23 +5,35 @@
 //  Created by jjudy on 2022/07/22.
 //
 
-// 2675
-// 문자열 S를 입력받은 후에, 각 문자를 R번 반복해 새 문자열 P를 만든 후 출력하는 프로그램을 작성하시오.
-// 즉, 첫 번째 문자를 R번 반복하고, 두 번째 문자를 R번 반복하는 식으로 P를 만들면 된다.
-// S에는 QR Code "alphanumeric" 문자만 들어있다.
-// QR Code "alphanumeric" 문자는 0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ\$%*+-./: 이다.
+// 1157
+// 알파벳 대소문자로 된 단어가 주어지면, 이 단어에서 가장 많이 사용된 알파벳이 무엇인지 알아내는 프로그램을 작성하시오.
+// 단, 대문자와 소문자를 구분하지 않는다.
+// 첫째 줄에 이 단어에서 가장 많이 사용된 알파벳을 대문자로 출력한다. 단, 가장 많이 사용된 알파벳이 여러 개 존재하는 경우에는 ?를 출력한다.
 import Foundation
 
-let caseCount = Int(readLine()!)!
+let inputWord = readLine()!.uppercased()
+var alphabetArr: [Character] = []
+var alphabetCount: [Int] = []
 
-for _ in 1...caseCount {
-    let inputArr = readLine()!.components(separatedBy: " ")
-    let repeatNum = Int(inputArr[0])!
-    let strArr = Array(inputArr[1])
-    for i in strArr {
-        for _ in 1...repeatNum { print(i, terminator: "") }
+for i in inputWord {
+    if !alphabetArr.contains(i) {
+        alphabetArr.append(i)
+        alphabetCount.append(0)
     }
-    print()
+    for j in alphabetArr {
+        if i == j {
+            let index = alphabetArr.distance(from: alphabetArr.startIndex, to: alphabetArr.firstIndex(of: i)!)
+            alphabetCount[index] += 1
+        }
+    }
 }
 
+let maxNum = alphabetCount.max()!
+
+if alphabetCount.firstIndex(of: maxNum) != alphabetCount.lastIndex(of: maxNum) {
+    print("?")
+} else {
+    let maxNumIndex = alphabetCount.distance(from: alphabetCount.startIndex, to: alphabetCount.firstIndex(of: maxNum)!)
+    print(alphabetArr[maxNumIndex])
+}
 
