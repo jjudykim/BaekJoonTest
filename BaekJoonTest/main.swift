@@ -5,25 +5,23 @@
 //  Created by jjudy on 2022/07/22.
 //
 
-// 1712
-// 매년 임대료, 재산세, 보험료, 급여 등 A만원의 고정 비용이 들며, 한 대의 노트북을 생산하는 데에는 재료비와 인건비 등 총 B만원의 가변 비용이 든다고 한다.
-// A=1,000, B=70이라고 하자. 이 경우 노트북을 한 대 생산하는 데는 총 1,070만원이 들며, 열 대 생산하는 데는 총 1,700만원이 든다.
-// 노트북 가격이 C만원으로 책정되었다고 한다.
-// 일반적으로 생산 대수를 늘려 가다 보면 어느 순간 총 수입(판매비용)이 총 비용(=고정비용+가변비용)보다 많아지게 된다.
-// 최초로 총 수입이 총 비용보다 많아져 이익이 발생하는 지점을 손익분기점(BREAK-EVEN POINT)이라고 한다.
-// A, B, C가 주어졌을 때, 손익분기점을 구하는 프로그램을 작성하시오.
+// 2675
+// 문자열 S를 입력받은 후에, 각 문자를 R번 반복해 새 문자열 P를 만든 후 출력하는 프로그램을 작성하시오.
+// 즉, 첫 번째 문자를 R번 반복하고, 두 번째 문자를 R번 반복하는 식으로 P를 만들면 된다.
+// S에는 QR Code "alphanumeric" 문자만 들어있다.
+// QR Code "alphanumeric" 문자는 0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ\$%*+-./: 이다.
 import Foundation
 
+let caseCount = Int(readLine()!)!
 
-// 총 비용 : A + B * 생산량
-// 손익분기점 : (C * 생산량) - (A + (B * 생산량)) > 0이 되는 생산량
-
-let priceArr = readLine()!.components(separatedBy: " ")
-let priceA = Int(priceArr[0])!
-let priceB = Int(priceArr[1])!
-let priceC = Int(priceArr[2])!
-
-if priceB >= priceC {
-    print("-1") } else {
-        print(priceA / (priceC - priceB) + 1)
+for _ in 1...caseCount {
+    let inputArr = readLine()!.components(separatedBy: " ")
+    let repeatNum = Int(inputArr[0])!
+    let strArr = Array(inputArr[1])
+    for i in strArr {
+        for _ in 1...repeatNum { print(i, terminator: "") }
     }
+    print()
+}
+
+
