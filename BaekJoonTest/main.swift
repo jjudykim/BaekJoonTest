@@ -12,28 +12,14 @@
 import Foundation
 
 let inputWord = readLine()!.uppercased()
-var alphabetArr: [Character] = []
-var alphabetCount: [Int] = []
-
-for i in inputWord {
-    if !alphabetArr.contains(i) {
-        alphabetArr.append(i)
-        alphabetCount.append(0)
-    }
-    for j in alphabetArr {
-        if i == j {
-            let index = alphabetArr.distance(from: alphabetArr.startIndex, to: alphabetArr.firstIndex(of: i)!)
-            alphabetCount[index] += 1
-        }
-    }
+var alphabetArr = Array(repeating: 0, count: 26)
+for i in inputWord.utf16 {
+    alphabetArr[Int(i - 65)] += 1
 }
 
-let maxNum = alphabetCount.max()!
-
-if alphabetCount.firstIndex(of: maxNum) != alphabetCount.lastIndex(of: maxNum) {
-    print("?")
+let maxNum = alphabetArr.max()!
+if alphabetArr.firstIndex(of: maxNum)! == alphabetArr.lastIndex(of: maxNum)! {
+    print(Character(UnicodeScalar(alphabetArr.firstIndex(of: maxNum)! + 65)!))
 } else {
-    let maxNumIndex = alphabetCount.distance(from: alphabetCount.startIndex, to: alphabetCount.firstIndex(of: maxNum)!)
-    print(alphabetArr[maxNumIndex])
+    print("?")
 }
-
