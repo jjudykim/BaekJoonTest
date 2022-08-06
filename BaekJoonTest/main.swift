@@ -5,21 +5,15 @@
 //  Created by jjudy on 2022/07/22.
 //
 
-// 1157
-// 알파벳 대소문자로 된 단어가 주어지면, 이 단어에서 가장 많이 사용된 알파벳이 무엇인지 알아내는 프로그램을 작성하시오.
-// 단, 대문자와 소문자를 구분하지 않는다.
-// 첫째 줄에 이 단어에서 가장 많이 사용된 알파벳을 대문자로 출력한다. 단, 가장 많이 사용된 알파벳이 여러 개 존재하는 경우에는 ?를 출력한다.
+// 3003
+// 체스는 총 16개의 피스를 사용하며, 킹 1개, 퀸 1개, 룩 2개, 비숍 2개, 나이트 2개, 폰 8개로 구성되어 있다.
+// 첫째 줄에 동혁이가 찾은 흰색 킹, 퀸, 룩, 비숍, 나이트, 폰의 개수가 주어진다. 이 값은 0보다 크거나 같고 10보다 작거나 같은 정수이다.
+// 첫째 줄에 입력에서 주어진 순서대로 몇 개의 피스를 더하거나 빼야 되는지를 출력한다. 만약 수가 양수라면 동혁이는 그 개수 만큼 피스를 더해야 하는 것이고, 음수라면 제거해야 하는 것이다.
 import Foundation
 
-let inputWord = readLine()!.uppercased()
-var alphabetArr = Array(repeating: 0, count: 26)
-for i in inputWord.utf16 {
-    alphabetArr[Int(i - 65)] += 1
-}
+let inputArr = readLine()!.components(separatedBy: " ")
+let correctArr = [1, 1, 2, 2, 2, 8]
 
-let maxNum = alphabetArr.max()!
-if alphabetArr.firstIndex(of: maxNum)! == alphabetArr.lastIndex(of: maxNum)! {
-    print(Character(UnicodeScalar(alphabetArr.firstIndex(of: maxNum)! + 65)!))
-} else {
-    print("?")
+for i in 0...inputArr.count-1 {
+    print(correctArr[i] - Int(inputArr[i])!, terminator: " ")
 }
