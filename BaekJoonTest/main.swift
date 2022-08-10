@@ -21,3 +21,8 @@ let numInt1 = Int(String(num1))!
 let numInt2 = Int(String(num2))!
 
 numInt1 > numInt2 ? print(numInt1) : print(numInt2)
+
+
+// 1등 코드
+var input = readLine()!.split(separator: " ").map { String($0.reversed()) }   // 역순으로 매핑
+print(input.max()!)   // 가장 큰 값 출력
